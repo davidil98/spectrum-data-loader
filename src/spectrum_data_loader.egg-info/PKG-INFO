@@ -1,0 +1,23 @@
+Metadata-Version: 2.4
+Name: spectrum-data-loader
+Version: 0.1.0
+Summary: A library to easily load spectral data from text files.
+Author-email: David Ibarra <david.ibarral0798@gmail.com>
+Project-URL: Homepage, https://github.com/davidil98/spectrum-data-loader.git
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Intended Audience :: Science/Research
+Classifier: Topic :: Scientific/Engineering
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Requires-Dist: pandas
+
+# Spectrum Data Loader
+
+Una librería simple y robusta para cargar datos de espectros de 2 columnas (X, Y) desde archivos de texto.
+
+## Instalación
+
+```bash
+pip install spectrum-data-loader

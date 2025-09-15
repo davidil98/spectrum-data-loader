@@ -1,0 +1,9 @@
+README.md
+pyproject.toml
+src/spectrum_data_loader/__init__.py
+src/spectrum_data_loader/parser.py
+src/spectrum_data_loader.egg-info/PKG-INFO
+src/spectrum_data_loader.egg-info/SOURCES.txt
+src/spectrum_data_loader.egg-info/dependency_links.txt
+src/spectrum_data_loader.egg-info/requires.txt
+src/spectrum_data_loader.egg-info/top_level.txt
