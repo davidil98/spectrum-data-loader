@@ -47,3 +47,6 @@ except FileNotFoundError:
 except Exception as e:
     print(f"An error occurred: {e}")
 ```
+
+## Examples
+For more advanced use cases, please see the code in the /examples directory of this repository.
