@@ -1,3 +1,4 @@
+LICENCE.txt
 README.md
 pyproject.toml
 src/spectrum_data_loader/__init__.py

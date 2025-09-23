@@ -11,7 +11,9 @@ Classifier: Intended Audience :: Science/Research
 Classifier: Topic :: Scientific/Engineering
 Requires-Python: >=3.8
 Description-Content-Type: text/markdown
+License-File: LICENCE.txt
 Requires-Dist: pandas
+Dynamic: license-file
 
 # Spectrum Data Loader
 

@@ -40,7 +40,7 @@ def _parse_file_to_lists(
                         continue
         return None
 
-    sample = [line for line in lines if line.strip()][:10]
+    sample = [line for line in lines if line.strip()][:50]
     delimiter = detect_delimiter(sample)
 
     if delimiter is None:
@@ -53,7 +53,7 @@ def _parse_file_to_lists(
         if not line.strip(): continue
         try:
             parts = [part for part in line.strip().split(delimiter) if part]
-            if len(parts) >= 2:
+            if len(parts) == 2:
                 x_val = float(parts[0].replace(',', '.'))
                 y_val = float(parts[1].replace(',', '.'))
                 x_data.append(x_val)
@@ -70,7 +70,7 @@ def _parse_file_to_lists(
 def load_xy_data(
     filepath: str,
     encodings: List[str] = ['utf-8', 'latin-1', 'cp1252'],
-    delimiters: List[str] = ['\t', ' ', '  ']
+    delimiters: List[str] = ['\t', ' ', '  ', ',']
 ) -> Tuple[List[float], List[float]]:
     """
     Carga datos de dos columnas desde un archivo de texto y los devuelve como dos listas.
@@ -93,7 +93,7 @@ def load_df_data(
     filepath: str,
     column_names: Tuple[str, str] = ('x_values', 'y_values'),
     encodings: List[str] = ['utf-8', 'latin-1', 'cp1252'],
-    delimiters: List[str] = ['\t', ' ', '  ']
+    delimiters: List[str] = ['\t', ' ', '  ', ',']
 ) -> pd.DataFrame:
     """
     Carga datos de dos columnas desde un archivo y los devuelve como un DataFrame de Pandas.
