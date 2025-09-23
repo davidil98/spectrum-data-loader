@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: spectrum-data-loader
-Version: 0.1.0
+Version: 0.1.2
 Summary: A library to easily load spectral data from text files.
 Author-email: David Ibarra <david.ibarral0798@gmail.com>
 Project-URL: Homepage, https://github.com/davidil98/spectrum-data-loader.git
