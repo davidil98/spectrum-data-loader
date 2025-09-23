@@ -8,7 +8,7 @@ The output is ready for immediate use with libraries like NumPy, Pandas, and Mat
 
 -   **Simple Interface**: Load any supported spectrum with a single function call: `load_xy_data()`.
 -   **Versatile**: Auto-detects common delimiters like spaces, tabs, and commas.
--   **Format Support**: Works with standard text-based formats (`.txt`, `.csv`, `.dat`) and the JCAMP-DX (`.jdx`) format.
+-   **Format Support**: Works with standard text-based formats (`.txt`) and the JCAMP-DX (`.jdx`) format.
 -   **Seamless Integration**: Returns data as two clean NumPy arrays, perfect for the scientific Python ecosystem (SciPy, Pandas, Matplotlib).
 
 ## Installation
