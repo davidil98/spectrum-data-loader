@@ -1,14 +1,14 @@
 import pandas as pd
 from typing import List, Tuple, Optional
 
-# 1. La función base "privada" (nota el guion bajo al inicio del nombre)
-# Esta función no está pensada para ser usada directamente por el usuario final.
+# 1. The "private" base function (note the leading underscore).
+# This function is not intended to be used directly by the end-user.
 def _parse_file_to_lists(
     filepath: str,
     encodings: List[str],
     delimiters: List[str]
 ) -> Tuple[List[float], List[float]]:
-    """Función interna para leer y parsear un archivo de texto a dos listas."""
+    """Internal function to read and parse a text file into two lists."""
     
     lines = None
     try:
@@ -20,12 +20,12 @@ def _parse_file_to_lists(
             except UnicodeDecodeError:
                 continue
     except FileNotFoundError:
-        raise FileNotFoundError(f"Error: El archivo no se encontró en: {filepath}")
+        raise FileNotFoundError(f"Error: File not found at: {filepath}")
 
     if lines is None:
-        raise ValueError(f"No se pudo leer el archivo '{filepath}' con las codificaciones: {encodings}")
+        raise ValueError(f"Could not read the file '{filepath}' with the provided encodings: {encodings}")
 
-    # Función interna para detectar el delimitador (sin cambios)
+    # Internal function to detect the delimiter (no changes needed here)
     def detect_delimiter(sample_lines: List[str]) -> Optional[str]:
         for line in sample_lines:
             if not line.strip(): continue
@@ -44,7 +44,8 @@ def _parse_file_to_lists(
     delimiter = detect_delimiter(sample)
 
     if delimiter is None:
-        raise ValueError("No se pudo determinar un delimitador válido en el archivo.")
+        # Translated error message
+        raise ValueError("Could not determine a valid delimiter in the file.")
 
     x_data: List[float] = []
     y_data: List[float] = []
@@ -62,33 +63,33 @@ def _parse_file_to_lists(
             continue
 
     if not x_data:
-        raise ValueError("No se encontraron datos numéricos válidos en el archivo.")
+        raise ValueError("No valid numerical data was found in the file.")
     
     return x_data, y_data
 
-# 2. Tu primera función pública: carga los datos como listas.
+# 2. Your first public function: loads data as lists.
 def load_xy_data(
     filepath: str,
     encodings: List[str] = ['utf-8', 'latin-1', 'cp1252'],
     delimiters: List[str] = ['\t', ' ', '  ', ',']
 ) -> Tuple[List[float], List[float]]:
     """
-    Carga datos de dos columnas desde un archivo de texto y los devuelve como dos listas.
+    Loads two-column data from a text file and returns it as two lists.
 
-    Ideal para usar con librerías que requieren listas de datos por ejes, como Manim.
+    Ideal for use with libraries that require lists of data per axis, such as Manim.
     
     Args:
-        filepath (str): La ruta al archivo de texto.
-        encodings (List[str], optional): Lista de codificaciones a probar.
-        delimiters (List[str], optional): Lista de delimitadores a probar.
+        filepath (str): The path to the text file.
+        encodings (List[str], optional): A list of encodings to try.
+        delimiters (List[str], optional): A list of delimiters to try.
 
     Returns:
-        Tuple[List[float], List[float]]: Una tupla con (lista_x, lista_y).
+        Tuple[List[float], List[float]]: A tuple containing (x_list, y_list).
     """
-    # Simplemente llama a la función base y devuelve su resultado.
+    # Simply calls the base function and returns its result.
     return _parse_file_to_lists(filepath, encodings, delimiters)
 
-# 3. Tu segunda función pública: carga los datos como un DataFrame.
+# 3. Your second public function: loads data as a DataFrame.
 def load_df_data(
     filepath: str,
     column_names: Tuple[str, str] = ('x_values', 'y_values'),
@@ -96,23 +97,21 @@ def load_df_data(
     delimiters: List[str] = ['\t', ' ', '  ', ',']
 ) -> pd.DataFrame:
     """
-    Carga datos de dos columnas desde un archivo y los devuelve como un DataFrame de Pandas.
+    Loads two-column data from a file and returns it as a pandas DataFrame.
 
-    Perfecto para análisis de datos y visualización con Matplotlib, Seaborn, etc.
-    
     Args:
-        filepath (str): La ruta al archivo de texto.
-        column_names (Tuple[str, str], optional): Nombres para las columnas del DataFrame.
-        encodings (List[str], optional): Lista de codificaciones a probar.
-        delimiters (List[str], optional): Lista de delimitadores a probar.
+        filepath (str): The path to the text file.
+        column_names (Tuple[str, str], optional): Names for the DataFrame columns.
+        encodings (List[str], optional): A list of encodings to try.
+        delimiters (List[str], optional): A list of delimiters to try.
 
     Returns:
-        pd.DataFrame: Un DataFrame de Pandas con los datos cargados.
+        pd.DataFrame: A pandas DataFrame with the loaded data.
     """
-    # Llama a la función base para obtener las listas.
+    # Calls the base function to get the lists.
     x_data, y_data = _parse_file_to_lists(filepath, encodings, delimiters)
     
-    # Construye y devuelve el DataFrame.
+    # Builds and returns the DataFrame.
     df = pd.DataFrame({
         column_names[0]: x_data,
         column_names[1]: y_data
